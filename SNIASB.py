@@ -53,9 +53,8 @@ def makePost():
     results = getEbayResults()
     title = "[BOT] Automatically generated items for {}, come discuss/review them!".format(strftime("%m-%d"))
     selftext = "\n".join([ "* {price} [{title}]({url})".format(price=results[result]['price'],title=result,url=results[result]['url']) for result in results ])
-    exit(title+"\n"+selftext)
     reddit.subreddit(secret.mySubreddit).submit(title,selftext=selftext,flair_id=flair_id,send_replies=False)
-    
+
 
 cat,flair_id = secret.categories[eval(strftime("%w"))]
 
